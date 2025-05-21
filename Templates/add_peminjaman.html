@@ -1,0 +1,43 @@
+<!-- peminjaman_list.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peminjaman Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Daftar Peminjaman Buku</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Peminjaman</th>
+                <th>Judul Buku</th>
+                <th>Nama Peminjam</th>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pem in peminjamans %}
+                <tr>
+                    <td>{{ pem.id }}</td>
+                    <td>{{ pem.judul }}</td>
+                    <td>{{ pem.nama_peminjam }}</td>
+                    <td>{{ pem.tanggal_pinjam }}</td>
+                    <td>{{ pem.tanggal_kembali }}</td>
+                    <td>{{ pem.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <nav>
+        <a href="/">Kembali ke Daftar Buku</a>
+        <a href="/add_peminjaman">Tambah Peminjaman</a>
+    </nav>
+</body>
+</html>

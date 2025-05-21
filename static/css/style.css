@@ -1,0 +1,117 @@
+/* Gaya dasar untuk seluruh halaman */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Daftar di dalam navigasi */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Setiap item dalam menu */
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Tautan di dalam menu */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hover efek pada tautan */
+nav ul li a:hover {
+    background-color: #4CAF50;
+}
+
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:hover {
+    background-color: #ADD8E6;
+}
+
+/* Tombol tambah buku */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+nav a{
+    background-color: blue;
+}
+/* style add.html */
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 50%; 
+    align-self: center;
+}
+
+form input{
+    height: 30px;
+    border-radius: 5px;
+}
+form button{
+    height: 40px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Tambah Buku Baru</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Daftar Buku</a></li>
+            <li><a href="/peminjaman">Peminjaman Buku</a></li>
+        </ul>
+    </nav>
+    <form method="POST">
+        <label for="judul">Judul:</label>
+        <input type="text" id="judul" name="judul" required><br><br>
+
+        <label for="penulis">Penulis:</label>
+        <input type="text" id="penulis" name="penulis" required><br><br>
+
+        <label for="tahun">Tahun Terbit:</label>
+        <input type="" id="tahun" name="tahun" required><br><br>
+
+        <button type="submit">Tambah Buku</button>
+    </form>
+    <br>
+    <script>
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // cegah submit default (refresh)
+    
+    // Lakukan proses lain jika perlu (validasi, kirim data AJAX, dll)
+    
+    // Setelah itu, redirect ke halaman utama
+    window.location.href = 'peminjaman.html';
+  });
+</script>
+    <a href="/">Kembali ke Daftar Buku</a>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Peminjaman Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Daftar Peminjaman Buku</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Daftar Buku</a></li>
+            <li><a href="/add">Tambah Buku</a></li>
+        </ul>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Judul Buku</th>
+                <th>Nama Peminjam</th>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pinjam in peminjaman %}
+            <tr>
+                <td>{{ pinjam.id }}</td>
+                <td>{{ pinjam.judul }}</td>
+                <td>{{ pinjam.nama_peminjam }}</td>
+                <td>{{ pinjam.tanggal_pinjam }}</td>
+                <td>{{ pinjam.tanggal_kembali }}</td>
+                <td>{{ pinjam.status }}</td>
+                <td>
+                    <a href="/edit_peminjaman/{{ pinjam.id }}">Edit</a> |
+                    <a href="/delete_peminjaman/{{ pinjam.id }}">Hapus</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Tambah Peminjaman Buku</h1>
+
+   <form action="{{ url_for('peminjaman') }}" method="POST">
+    <label for="judul_buku">Judul Buku</label>
+    <input type="text" id="judul_buku" name="judul_buku" 
+           value="{{ selected_book.judul if selected_book else '' }}" readonly>
+
+    <input type="hidden" id="id_buku" name="id_buku" 
+           value="{{ selected_book.id if selected_book else '' }}">
+
+    <label for="nama_peminjam">Nama Peminjam</label>
+    <input type="text" id="nama_peminjam" name="nama_peminjam" required>
+
+    <label for="tanggal_pinjam">Tanggal Pinjam</label>
+    <input type="date" id="tanggal_pinjam" name="tanggal_pinjam" value="{{ current_date }}" required>
+
+    <label for="tanggal_kembali">Tanggal Kembali</label>
+    <input type="date" id="tanggal_kembali" name="tanggal_kembali" required>
+
+    <label for="status">Status</label>
+    <select id="status" name="status" required>
+        <option value="dalam masa">Dalam Masa</option>
+        <option value="lewat masa">Lewat Masa</option>
+        <option value="extend">Extend</option>
+    </select>
+
+    <button type="submit">Tambah Peminjaman</button>
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Daftar Buku</h1>
+
+    <nav>
+        <ul>
+            <li><a href="/add">Tambah Buku</a></li>
+            <li><a href="/peminjaman">Peminjaman Buku</a></li>
+        </ul>
+    </nav>
+  
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Judul</th>
+            <th>Penulis</th>
+            <th>Tahun Terbit</th>
+            <th>Aksi</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book['id'] }}</td>
+            <td>{{ book['judul'] }}</td>
+            <td>{{ book['penulis'] }}</td>
+            <td>{{ book['tahun'] }}</td>
+            <td>
+                <a href="/edit/{{ book['id'] }}">Edit</a> |
+                <a href="/delete/{{ book['id'] }}">Hapus</a>
+                <a href="/peminjaman?book_id={{ book.id }}">Pinjam</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

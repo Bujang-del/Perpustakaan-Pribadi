@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Peminjaman Buku</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <nav>
+        <a href="/">Daftar Buku</a>
+        <a href="/add">Tambah Buku</a>
+        <a href="/peminjaman">Peminjaman Buku</a>
+    </nav>
+
+    <h1>Edit Peminjaman Buku</h1>
+
+    <form action="{{ url_for('edit_peminjaman', id=peminjaman.id) }}" method="POST">
+        <label for="nama_peminjam">Nama Peminjam</label>
+        <input type="text" id="nama_peminjam" name="nama_peminjam" value="{{ peminjaman.nama_peminjam }}" required />
+
+        <label for="tanggal_pinjam">Tanggal Pinjam</label>
+        <input type="date" id="tanggal_pinjam" name="tanggal_pinjam" value="{{ peminjaman.tanggal_pinjam }}" required />
+
+        <label for="tanggal_kembali">Tanggal Kembali</label>
+        <input type="date" id="tanggal_kembali" name="tanggal_kembali" value="{{ peminjaman.tanggal_kembali }}" required />
+
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+            <option value="dalam masa" {% if peminjaman.status == 'dalam masa' %}selected{% endif %}>Dalam Masa</option>
+            <option value="lewat masa" {% if peminjaman.status == 'lewat masa' %}selected{% endif %}>Lewat Masa</option>
+            <option value="extend" {% if peminjaman.status == 'extend' %}selected{% endif %}>Extend</option>
+        </select>
+
+        <button type="submit">Simpan Perubahan</button>
+    </form>
+</body>
+</html>
