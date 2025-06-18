@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 from datetime import date
+import os
 
 app = Flask(__name__)
-
+app.secret_key = os.environ.get('SECRET_KEY', 'default_secret_key_aman')
 # Koneksi ke database SQLite
 def get_db_connection():
     conn = sqlite3.connect('dbSqlite.db')  # pastikan nama file database sesuai
