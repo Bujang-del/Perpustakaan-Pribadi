@@ -270,6 +270,7 @@ form button{
     border: 1px solid #ccc;
     border-radius: 6px 0 0 6px;
     outline: none;
+    margin-bottom: 20px;
 }
 
 .search-form button {
@@ -277,7 +278,7 @@ form button{
     border: none;
     background-color: #5cb85c;
     color: white;
-    border-radius: 0 6px 6px 0;
+    border-radius: 6 6px 6px 6;
     cursor: pointer;
 }
 
@@ -285,9 +286,8 @@ form button{
     background-color: #4cae4c;
 }
 
-.reset-button {
+.search-form .reset-button {
     display: inline-block;
-    margin-left: 10px;
     padding: 10px 15px;
     background-color: #6c757d;
     color: #fff;
@@ -295,6 +295,6 @@ form button{
     text-decoration: none;
 }
 
-.reset-button:hover {
+.search-form .reset-button:hover {
     background-color: #5a6268;
 }
