@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil Pengguna</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        {% if session.get('role') == 'admin' %}
+            <p><a href="{{ url_for('users') }}">Lihat Semua Pengguna</a></p>
+        {% endif %}
+
+        <h2>Profil Saya</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <label>Username:</label>
+            <input type="text" name="username" value="{{ user['username'] }}" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ user['email'] or '' }}" required>
+
+            <label>Password (kosongkan jika tidak ingin mengganti):</label>
+            <input type="password" name="password" placeholder="Password baru">
+
+            <button type="submit">Simpan Perubahan</button>
+        </form>
+
+        <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    </div>
+
+    {% if users %}
+    <div class="admin-userlist">
+        <h2>Daftar Semua Pengguna</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u['id'] }}</td>
+                    <td>{{ u['username'] }}</td>
+                    <td>{{ u['email'] }}</td>
+                    <td>{{ u['role'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>

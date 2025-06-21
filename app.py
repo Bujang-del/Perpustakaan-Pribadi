@@ -260,5 +260,106 @@ def edit_peminjaman(id):
 
 # ---------------- MAIN ----------------
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if 'username' not in session:
+        flash("Silakan login terlebih dahulu.", "danger")
+        return redirect(url_for('login'))
+
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE username = ?', (session['username'],)).fetchone()
+
+    if request.method == 'POST':
+        new_username = request.form['username']
+        new_email = request.form['email']
+        new_password = request.form['password']
+
+        if new_password:
+            hashed_pw = generate_password_hash(new_password)
+            conn.execute('UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?',
+                         (new_username, new_email, hashed_pw, user['id']))
+        else:
+            conn.execute('UPDATE users SET username = ?, email = ? WHERE id = ?',
+                         (new_username, new_email, user['id']))
+
+        conn.commit()
+        conn.close()
+
+        session['username'] = new_username
+        flash("Profil berhasil diperbarui.", "success")
+
+        # ⬇️ Redirect berdasarkan role
+        if session.get('role') == 'admin':
+            return redirect(url_for('index'))
+        else:
+            return redirect(url_for('member'))
+
+    # Untuk GET request
+    users = []
+    if session.get('role') == 'admin':
+        # users = conn.execute('SELECT * FROM users').fetchall()
+        flash("Jangan sampai lupa password ya")
+    conn.close()
+    return render_template('profile.html', user=user, users=users)
+
+
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+def edit_profile():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
+
+    if request.method == 'POST':
+        new_username = request.form['username']
+        new_email = request.form['email']
+        new_password = request.form['password']
+
+        if new_password:
+            conn.execute('UPDATE users SET username=?, email=?, password=? WHERE id=?',
+                         (new_username, new_email, new_password, session['user_id']))
+        else:
+            conn.execute('UPDATE users SET username=?, email=? WHERE id=?',
+                         (new_username, new_email, session['user_id']))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('profile'))
+
+    conn.close()
+    return render_template('edit_profile.html', user=user)
+
+@app.route('/admin/users')
+def list_users():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM users WHERE id = ?', (session['user_id'],)).fetchone()
+
+    if user['role'] != 'admin':
+        conn.close()
+        return "Akses ditolak. Hanya admin yang dapat melihat halaman ini.", 403
+
+    users = conn.execute('SELECT * FROM users').fetchall()
+    conn.close()
+    return render_template('users_admin.html', users=users)
+
+@app.route('/users')
+def users():
+    if session.get('role') != 'admin':
+        flash("Akses ditolak. Halaman ini hanya untuk admin.", "danger")
+        return redirect(url_for('profile'))
+
+    conn = get_db_connection()
+    users = conn.execute('SELECT * FROM users').fetchall()
+    conn.close()
+
+    return render_template('users.html', users=users)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+

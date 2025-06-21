@@ -10,7 +10,10 @@
         <div class="member-header">
             <p>Halo, {{ username }}! Mau baca apa hari ini</p>
             <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+            <a href="{{ url_for('profile') }}">Profil</a>
+
         </div>
+        
             <form method="GET" action="{{ url_for('member') }}" class="search-form">
                 <input type="text" name="q" placeholder="Cari judul atau penulis..." value="{{ query or '' }}">
                 <button type="submit">Cari</button>
