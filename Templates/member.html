@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Buku | Member</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="member-container">
+        <div class="member-header">
+            <p>Halo, {{ username }}! Mau baca apa hari ini</p>
+            <a href="{{ url_for('logout') }}" class="logout-link">Logout</a>
+        </div>
+            <form method="GET" action="{{ url_for('member') }}" class="search-form">
+                <input type="text" name="q" placeholder="Cari judul atau penulis..." value="{{ query or '' }}">
+                <button type="submit">Cari</button>
+                {% if query %}
+                    <a href="{{ url_for('member') }}" class="reset-button">Tampilkan Semua</a>
+                {% endif %}
+            </form>
+
+
+        <h2>Daftar Buku Tersedia</h2>
+
+        {% if books %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Judul</th>
+                        <th>Penulis</th>
+                        <th>Tahun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book['id'] }}</td>
+                            <td>{{ book['judul'] }}</td>
+                            <td>{{ book['penulis'] }}</td>
+                            <td>{{ book['tahun'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Tidak ada buku tersedia.</p>
+        {% endif %}
+
+    </div>
+    
+</body>
+</html>

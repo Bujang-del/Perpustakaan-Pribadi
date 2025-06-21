@@ -115,3 +115,186 @@ form button{
     color: white;
     border-radius: 10px;
 }
+
+/* Tambahan untuk login form */
+
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"],
+.login-container input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+
+.login-container form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5cb85c;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-container form button:hover {
+    background-color: #4cae4c;
+}
+
+.login-container p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Flash message styles */
+.flash {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flash.info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.member-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.member-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.member-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.member-container table th{
+    color: black;
+}
+.member-container table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.member-container table th {
+    background-color: #f2f2f2;
+}
+
+.member-container a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.member-container a:hover {
+    text-decoration: underline;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.admin-header a {
+    color: #dc3545;
+    text-decoration: none;
+}
+.admin-header a:hover {
+    text-decoration: underline;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #4cae4c;
+}
+
+.reset-button {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.reset-button:hover {
+    background-color: #5a6268;
+}

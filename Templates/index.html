@@ -10,12 +10,16 @@
     <h1>Daftar Buku</h1>
     <h2>Hello Raja Fuad Nawawi</h2>
     <h2>Nim : 22523247</h2>
-
+    <div class="admin-header">
+            <p>Halo, Admin!</p>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
     <nav>
         <ul>
             <li><a href="/add">Tambah Buku</a></li>
             <li><a href="/peminjaman">Peminjaman Buku</a></li>
         </ul>
+        
     </nav>
   
     <table border="1">
@@ -40,5 +44,6 @@
         </tr>
         {% endfor %}
     </table>
+        
 </body>
 </html>
