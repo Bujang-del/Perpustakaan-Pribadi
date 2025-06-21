@@ -14,7 +14,8 @@ def get_db_connection():
     print("Database Connected Successfully!")
     return conn
 
-# ---------------- AUTH ----------------
+# ---------------- AUTHORITY ----------------
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
