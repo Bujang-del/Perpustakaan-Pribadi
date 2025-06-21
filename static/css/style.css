@@ -293,8 +293,13 @@ form button{
     color: #fff;
     border-radius: 6px;
     text-decoration: none;
+    text-align: center;
+}
+.search-form .reset-button a{
+    text-decoration: none;
 }
 
 .search-form .reset-button:hover {
     background-color: #5a6268;
+    text-decoration: none;
 }
